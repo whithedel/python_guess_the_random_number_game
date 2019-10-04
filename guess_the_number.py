@@ -1,4 +1,6 @@
 from random import randint
+import sys 
+from termcolor import colored, cprint 
 
 randomNum = randint(1,100)
 
