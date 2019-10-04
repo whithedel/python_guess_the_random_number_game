@@ -1,5 +1,5 @@
 from random import randint
-
+from colorama import Fore, Back, Style
 
 randomNum = randint(1,100)
 
