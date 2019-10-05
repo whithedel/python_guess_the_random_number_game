@@ -1,38 +1,45 @@
 from random import randint
-from colorama import Fore, Back, Style
-
 randomNum = randint(1,100)
 
-print("WELCOME TO GUESS ME!")
-print("I'm thinking of a number between 1 and 100")
-print("If your guess is more than 10 away from my number, I'll tell you you're COLD")
-print("If your guess is within 10 of my number, I'll tell you you're WARM")
-print("If your guess is farther than your most recent guess, I'll say you're getting COLDER")
-print("If your guess is closer than your most recent guess, I'll say you're getting WARMER")
-print("LET'S PLAY!")
+def prPurple(skk): print("\033[95m {}\033[00m" .format(skk))
+def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
+def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
+def prCyan(skk): print("\033[96m {}\033[00m" .format(skk)) 
+def prGreen(skk):
+    for x in skk:
+        print("\033[92m {}\033[00m" .format(x))
 
+
+msg= ["WELCOME TO GUESS ME!",
+"I'm thinking of a number between 1 and 100",
+"If your guess is more than 10 away from my number, I'll tell you you're COLD",
+"If your guess is within 10 of my number, I'll tell you you're WARM",
+"If your guess is farther than your most recent guess, I'll say you're getting COLDER",
+"If your guess is closer than your most recent guess, I'll say you're getting WARMER",
+"LET'S PLAY!"]
+prGreen(msg)
 guesses= [0]
 
 while True:
-   myGuess = int(input('guess a random number between 1 to 100 \n\n'))
+   myGuess = int(input('\033[96m guess a random number between 1 to 100 \n\n\033[00m'))
    
    if myGuess < 1 or myGuess > 100:
-       print('OUT OF BOUNDS')
+       prRed('OUT OF BOUNDS')
        continue
    
    if myGuess == randomNum:
-       print(f'Excellent it only took you {len(guesses)} guesse(s)!!!')
+       prPurple(f'Excellent it only took you {len(guesses)} guesse(s)!!!')
        break
 
    guesses.append(myGuess)
 
    if len(guesses) >= 2:
        if abs(randomNum - myGuess) < abs(randomNum - guesses[-2]):
-           print('WARMER!!!')
+           prYellow('WARMER!!!')
        else:
-           print('COLDER!!!')
+           prRed('COLDER!!!')
    else:
        if abs(randomNum - myGuess) <= 10 :
-           print('COlD!!!')
+           prRed('COlD!!!')
        else :
-           print('WARM!!!')
+           prYellow('WARM!!!')
